@@ -32,7 +32,7 @@ app = pycord.GatewayApp(0)
 )
 async def echo(
     cmd: SlashCommand,
-    content: Option
+    content: Option[str]
 ):
     # responds to the command with its options' value
     await cmd.respond(content.value)
@@ -43,7 +43,7 @@ app.connect('token')
 The `app.command` statement here initiates the command, you can enter a custom command class in the `cls`
 parameter, which allows you to add much more customizations.
 The `cmd` represents the command you just invoked, and should be the same class as `cls`,
-the `content` fully represents the option you placed above.
+the `content` fully represents the option you placed above, it also has an extra `[str]` type hint to represent it's value is a string.
 
 You can also add a command like the following:
 

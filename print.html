@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="en-US" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Pycord Discord Library</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Introduction</a></li><li class="chapter-item expanded "><a href="getting-started/index.html"><strong aria-hidden="true">1.</strong> Getting Started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="getting-started/coding_rest_only.html"><strong aria-hidden="true">1.1.</strong> Coding REST-only Bots & Caching</a></li></ol></li><li class="chapter-item expanded "><a href="commands.html"><strong aria-hidden="true">2.</strong> Commands</a></li><li class="chapter-item expanded "><a href="community/index.html"><strong aria-hidden="true">3.</strong> Community</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="community/extensions.html"><strong aria-hidden="true">3.1.</strong> Extensions</a></li><li class="chapter-item expanded "><a href="community/commands.html"><strong aria-hidden="true">3.2.</strong> Prefix</a></li></ol></li><li class="chapter-item expanded "><a href="models/index.html"><strong aria-hidden="true">4.</strong> Models</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="models/channels/index.html"><strong aria-hidden="true">4.1.</strong> Channels</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="models/channels/messageable.html"><strong aria-hidden="true">4.1.1.</strong> Messageable Channels</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Pycord Discord Library</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Welcome to the Pycord Book! this book is written for version 3.0 of pycord, and is assuming you are using it.</p>
+<h2 id="expertises-required"><a class="header" href="#expertises-required">Expertises Required</a></h2>
+<p>This book expects you have advanced knowledge in Python and Discord,
+if you don't your most likely going to get lost in this book.</p>
+<h2 id="what-is-this-for"><a class="header" href="#what-is-this-for">What is this for?</a></h2>
+<p>The Pycord book is currently a design document for Pycord v3's New Specification,
+it outlines how the design will be once publicly released.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p>To get started, please install the newest development version of v3 via:</p>
+<pre><code class="language-console">$ pip install git+ssh://git@github.com/pycord/pycord-v3.git
+</code></pre>
+<p>Once you are done with that, you can now get to the other sections!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="coding-a-http-only-bot"><a class="header" href="#coding-a-http-only-bot">Coding a HTTP only bot</a></h1>
+<p>This section outlines the basics on how you are able to create a http-only bot application in Pycord.</p>
+<h2 id="provisions"><a class="header" href="#provisions">Provisions</a></h2>
+<p>Pycord provisions you basic tools to create a bot application which does not require the gateway,
+this chapter of the book has extensive use of RESTApp which is Pycord's base class for REST-only Applications.</p>
+<p>You can subclass this class for better extensibility and to make further development on your part easier.</p>
+<h2 id="caching"><a class="header" href="#caching">Caching</a></h2>
+<p>Pycord's Cache is also enabled on RESTApp, meaning you can run another app to provision its caching and other things.</p>
+<p>This also gives you a one-fetch policy, which lets you discard making a request for going into the cache.
+Although, after long periods of time this cache can get outdated since its working without a gateway,
+so we ensure you use it lightly.</p>
+<h3 id="replacing-caches"><a class="header" href="#replacing-caches">Replacing Caches</a></h3>
+<p>Pycord lets you replace where you want to store your cache, all you have to do is subclass AsyncDict and enter it into state,
+like so:</p>
+<pre><code class="language-py">from pycord.state import AsyncDict
+
+class MyAsyncDict(AsyncDict):
+    async def get(self, t: Any):
+        return await self.my_db.get(t)
+
+    async def pop(self, t: Any):
+        return await self.my_db.pop(t)
+</code></pre>
+<p>and so on for other functions required.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="commands"><a class="header" href="#commands">Commands</a></h1>
+<p>Pycord's Implementation of commands is made to be more extensible, and more modular.</p>
+<p>Its core design is class-based and based on multiple principles:</p>
+<ul>
+<li>Speed</li>
+<li>Modularity, Extensibility &amp; Replacability</li>
+<li>Easiness</li>
+</ul>
+<p>To put all of these in practice, the following system has been proposed.</p>
+<h2 id="the-system"><a class="header" href="#the-system">The System</a></h2>
+<p>Pycord's Command system works pretty simple, it will leverage multiple things like classes and subclasses,
+putting it together can give the following example:</p>
+<pre><code class="language-py">import pycord
+from pycord.commands import SlashCommand, Meta
+
+# make a GatewayApp with an intent value of 0
+app = pycord.GatewayApp(0)
+
+# NOTE: The default type of command is SlashCommand
+@app.command('echo')
+async def echo(
+    cmd: SlashCommand,
+    content: pycord.Annotated[
+        str,
+        Meta(
+            name='content',
+            description='The content to echo!'
+        )
+    ]
+):
+    # responds to the command with its options' value
+    await cmd.respond(content.value)
+
+app.connect('token')
+</code></pre>
+<p>The <code>app.command</code> statement here initiates the command, you can enter a custom command class in the <code>cls</code>
+parameter, which allows you to add much more customizations.
+The <code>cmd</code> represents the command you just invoked, and should be the same class as <code>cls</code>,
+the <code>content</code> fully represents the option you placed above, it also has an extra <code>[str]</code> type hint to represent it's value is a string.</p>
+<p>You can also add a command like the following:</p>
+<blockquote>
+<p>NOTE: This could be redone at a point</p>
+</blockquote>
+<pre><code class="language-py">app.add_command(
+    'echo',
+    echo
+)
+</code></pre>
+<h3 id="explanation"><a class="header" href="#explanation">Explanation</a></h3>
+<p>To explain more, lets go through our arguments and parameters:</p>
+<p><strong>arguments:</strong></p>
+<ul>
+<li><code>'echo'</code> this is the name of the command, which will be given to the class.</li>
+</ul>
+<p><strong>parameters:</strong></p>
+<ul>
+<li><code>cmd</code> an instance of <code>cls</code>, in this case <code>SlashCommand</code></li>
+<li><code>content</code> the option which you want entered</li>
+</ul>
+<p>There will also be other arguments that can be placed:</p>
+<p><strong>arguments:</strong></p>
+<ul>
+<li><code>cls</code> a custom command class to use</li>
+<li><code>guild</code> a singular guild to limit this command onto</li>
+<li><code>guilds</code> a list of guilds to limit this command to</li>
+<li><code>guild_id</code> a singular guild to limit this command onto</li>
+<li><code>guild_ids</code> a list of guilds to limit this command to</li>
+<li><code>before</code> a list of functions to call before the command function is invoked</li>
+<li><code>after</code> a list of functions to call after the command function is invoked</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="community"><a class="header" href="#community">Community</a></h1>
+<p>The <code>pycord.community</code> module is very similar to the design of the prior versions' <code>discord.ext</code> module
+except for it having a much different design and different set of modules.</p>
+<h2 id="what-is-the-criteria"><a class="header" href="#what-is-the-criteria">What is the criteria?</a></h2>
+<p>The <code>pycord.community</code> module is meant to host a abundance of libraries, although our criteria is pretty strict:</p>
+<ul>
+<li>Has to be 100% Type-safe</li>
+<li>Has to have no <strong>required</strong> extra dependencies</li>
+<li>Needs to be used by more then 30 Repositories, or by core developers</li>
+<li>Has to have a respective use</li>
+<li>Cannot be bloated</li>
+<li>Has to be written in Python (Although, expect some exceptions)</li>
+</ul>
+<h2 id="what-libraries-are-gonna-be-hosted"><a class="header" href="#what-libraries-are-gonna-be-hosted">What libraries are gonna be hosted</a></h2>
+<p>Libraries that will be included are quite obviously wanted modules, in example:</p>
+<ul>
+<li>Extensions (Cog replacement)</li>
+<li>Prefix (ext.commands replacement)</li>
+<li>Taskineer (ext.tasks replacement)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="extensions"><a class="header" href="#extensions">Extensions</a></h1>
+<p>Pycords' new extension design is created to be easier, more intuitive and faster for anyone and everyone.</p>
+<p>The design is less class-based and more instance based.
+An example which could be given is the following:</p>
+<pre><code class="language-py">from pycord.community import extensions
+
+# creates an Extension with the name of `__name__`
+extension = extensions.Extension(__name__)
+
+@extension.listen('hook')
+def on_hook():
+    print('The bot is online!')
+</code></pre>
+<p>that example generates the hook event.</p>
+<blockquote>
+<p>Note: Functions like Listening and Commands will be the same
+as they are normally.</p>
+</blockquote>
+<h2 id="loading-extensions"><a class="header" href="#loading-extensions">Loading Extensions</a></h2>
+<p>To load an extension, you'll have to do something like the following:</p>
+<pre><code class="language-py">import pycord
+from extensions.my_extension import extension
+
+# initiate a GatewayApp instance with an intent value of 0
+app = pycord.GatewayApp(0)
+
+# loads the extension onto the app
+# if you enter another extension here it extends it onto there.
+extension.extend(app=app)
+
+# connects to the Gateway
+app.connect('token')
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="prefix"><a class="header" href="#prefix">Prefix</a></h1>
+<p>The new prefixed system is supposed to be a better, more extensible system then the old
+ext.commands extension.</p>
+<h2 id="making-a-simple-prefixed-commands"><a class="header" href="#making-a-simple-prefixed-commands">Making a simple prefixed commands</a></h2>
+<p>Pycord's prefix system is supposed to be easier then the old legacy system.
+It is based on our standardized system and henceforth the following design is purposed:</p>
+<pre><code class="language-py">@app.command('hi', cls=prefix.Command, prefix='!')
+async def hi(cmd: prefix.Command):
+    await cmd.respond(f'hello {cmd.user.mention}!')
+</code></pre>
+<p>The design is short, and allows for different prefixes per-command.
+The prefix argument also allows you to enter an asynchronous function to have access to things like per-guild prefixes.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-a-model"><a class="header" href="#what-is-a-model">What is a model?</a></h1>
+<p>Pycords' Model's are simply classes which represent Discord Objects, such as <code>User</code>, <code>Guild</code>, <code>Channel</code>, <code>Message</code>, etc.</p>
+<h2 id="general-model-design"><a class="header" href="#general-model-design">General Model Design</a></h2>
+<p>Every model subclasses the <code>Hashable</code> class which allows for their ids to be hashed.</p>
+<p>Model's are also designed to be replacable, meaning you can subclass and replace any model class you want.
+Some model internals may also be written in Rust to greatly improve their speed and scalability.</p>
+<h2 id="help-us"><a class="header" href="#help-us">Help Us!</a></h2>
+<p>Our model design is still a big WIP, if you wanna help design it with us, <a href="https://github.com/pycord/book/compare">make a PR</a>!</p>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="messageable-channels"><a class="header" href="#messageable-channels">Messageable Channels</a></h1>
+<p>Messageable Discord Channels are channels which allows users to send messages in them, such as:</p>
+<ul>
+<li>Text Channels</li>
+<li>Voice Channels</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

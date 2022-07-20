@@ -1,0 +1,6 @@
+[book]
+authors = ["VincentRPS"]
+language = "en-US"
+multilingual = false
+src = "src"
+title = "The Pycord Discord Library"

@@ -15,24 +15,22 @@ putting it together can give the following example:
 
 ```py
 import pycord
-from pycord.commands import SlashCommand, Option
+from pycord.commands import SlashCommand, Meta
 
 # make a GatewayApp with an intent value of 0
 app = pycord.GatewayApp(0)
 
 # NOTE: The default type of command is SlashCommand
-@app.command(
-    'echo',
-    options=[
-        Option(
-            name='content',
-            description='The content to echo'
-        )
-    ]
-)
+@app.command('echo')
 async def echo(
     cmd: SlashCommand,
-    content: Option[str]
+    content: pycord.Annotated[
+        str,
+        Meta(
+            name='content',
+            description='The content to echo!'
+        )
+    ]
 ):
     # responds to the command with its options' value
     await cmd.respond(content.value)
@@ -52,12 +50,6 @@ You can also add a command like the following:
 ```py
 app.add_command(
     'echo',
-    options=[
-        Option(
-            name='content',
-            description='the content toe cho'
-        )
-    ],
     echo
 )
 ```
@@ -68,11 +60,10 @@ To explain more, lets go through our arguments and parameters:
 
 **arguments:**
 - `'echo'` this is the name of the command, which will be given to the class.
-- `options` these are the options you want the command to have.
 
 **parameters:**
 - `cmd` an instance of `cls`, in this case `SlashCommand`
-- `content` a copied version of the option you gave.
+- `content` the option which you want entered
 
 There will also be other arguments that can be placed:
 
